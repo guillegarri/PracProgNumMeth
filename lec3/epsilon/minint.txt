@@ -1,0 +1,4 @@
+For while loop, my min int 	 = -2147483648
+For for loop, my min int 	 = -2147483648
+For do while loop, my min int 	 = -2147483648
+My computer min int is 	 	 = -2147483648

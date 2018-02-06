@@ -1,0 +1,2 @@
+My tau =0.3 and my epsilon = 0.05
+Are 5.0 and 5.2 equal? Yes.

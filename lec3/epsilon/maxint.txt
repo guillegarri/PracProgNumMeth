@@ -1,0 +1,4 @@
+For while loop, my max int 	 = 2147483647
+For for loop, my max int 	 = 2147483647
+For do while loop, my max int 	 = 2147483647
+My computer max int is 	 	 = 2147483647
