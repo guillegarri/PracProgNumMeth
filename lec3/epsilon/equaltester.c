@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "math.h"
-#include <stdlib.h>
-#include <string.h>
+#include "stdlib.h"
+#include "string.h"
 
 int equal(double a, double b, double tau, double epsilon);
 

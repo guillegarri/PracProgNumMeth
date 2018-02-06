@@ -4,7 +4,11 @@
 default: out.txt
 	cat out.txt
 
-madefiles = out.txt minint maxint maxint.txt minint.txt epsilon epsilon.txt sums sums.txt equaltests equaltests.txt
+.PHONEY:fun
+fun: equaltester digitwriter
+
+
+madefiles = out.txt minint maxint maxint.txt minint.txt epsilon epsilon.txt sums sums.txt equaltests equaltests.txt equaltester digitwriter
 texts = maxint.txt minint.txt epsilon.txt sums.txt equaltests.txt
 
 out.txt: $(texts)
@@ -44,8 +48,12 @@ sums: sums.c
 equaltests: equaltests.c equal.c
 	gcc equal.c equaltests.c -o equaltests
 
+clean:
+	$(RM) $(madefiles)
+
+#Just for fun
 equaltester: equaltester.c equal.c
 	gcc equal.c equaltester.c -o equaltester
 
-clean:
-	$(RM) $(madefiles)
+digitwriter: digitwriter.c
+	gcc digitwriter.c -o digitwriter
