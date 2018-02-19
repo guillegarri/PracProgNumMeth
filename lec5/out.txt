@@ -1,0 +1,11 @@
+
+main: testing nvector_alloc ...
+test passed
+
+main: testing nvector_set and nvector_get ...
+test passed
+
+main: testing nvector_add ...
+a+b should   =  [1.17748, 1.71009, 0.532774, 1.046, 1.03137] 
+a+b actually =  [1.17748, 1.71009, 0.532774, 1.046, 1.03137] 
+test passed
