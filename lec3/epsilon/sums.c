@@ -27,7 +27,7 @@ int main() {
   sum_up_double+=1.0/max;
   printf("Sum up double = %3.8g\n", sum_up_double);
 
-  float sum_down_double = 0.0;
+  double sum_down_double = 0.0;
   for (int N=1; N < max; N++) {
     sum_down_double+=1.0/(max-N);
   }

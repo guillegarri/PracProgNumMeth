@@ -13,7 +13,7 @@ int main() {
   float y = 1;
   while(1+y!=1){y/=2;}
   y*=2;
-  printf("For while float epsilon \t = %f\n", y);
+  printf("For while float epsilon \t = %g\n", y);
 
   long double z = 1;
   while(1+z!=1){z/=2;}
@@ -28,7 +28,7 @@ int main() {
   float b =1;
   for (b; 1+b!=1; b/=2) {}
   b*=2;
-  printf("For for float epsilon\t\t = %f\n", b);
+  printf("For for float epsilon\t\t = %g\n", b);
 
   long double c =1;
   for (c; 1+c!=1; c/=2) {}
@@ -45,7 +45,7 @@ int main() {
   do {Y/=2;
   } while(1+Y!=1);
   Y*=2;
-  printf("For do while float epsilon\t = %f\n", Y);
+  printf("For do while float epsilon\t = %g\n", Y);
 
   long double Z = 1;
   do {Z/=2;
@@ -54,7 +54,7 @@ int main() {
   printf("For do while long double epsilon = %Lg\n", Z);
 
   printf("Machine double epsilon \t\t = %g\n", DBL_EPSILON);
-  printf("Machine float epsilon \t\t = %f\n", FLT_EPSILON);
+  printf("Machine float epsilon \t\t = %g\n", FLT_EPSILON);
   printf("Machine long double epsilon\t = %Lg\n", LDBL_EPSILON);
   return 0;
 }

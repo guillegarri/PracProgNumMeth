@@ -1,12 +1,12 @@
 For while double epsilon	 = 2.22045e-16
-For while float epsilon 	 = 0.000000
+For while float epsilon 	 = 1.19209e-07
 For while long double epsilon	 = 1.0842e-19
 For for double epsilon		 = 2.22045e-16
-For for float epsilon		 = 0.000000
+For for float epsilon		 = 1.19209e-07
 For for long double epsilon	 = 1.0842e-19
 For do while double epsilon	 = 2.22045e-16
-For do while float epsilon	 = 0.000000
+For do while float epsilon	 = 1.19209e-07
 For do while long double epsilon = 1.0842e-19
 Machine double epsilon 		 = 2.22045e-16
-Machine float epsilon 		 = 0.000000
+Machine float epsilon 		 = 1.19209e-07
 Machine long double epsilon	 = 1.0842e-19

@@ -1,4 +1,4 @@
 Sum up float = 15.403683
 Sum down float = 18.807919
 Sum up double = 22.064778
-Sum down double = 18.807919
+Sum down double = 22.064778
