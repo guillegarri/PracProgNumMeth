@@ -7,8 +7,7 @@ TEXTS = out1.txt out.io.txt out.cmd.txt input.data.txt
 progs : main-cmdline main-stdio
 
 all              : out.io.txt out.cmd.txt plot.svg         ;
-	cat out.io.txt
-	cat out.cmd.txt
+	cat out.io.txt out.cmd.txt
 
 out.io.txt       : main-stdio input.data.txt  ;
 	cat input.data.txt | ./main-stdio > out.io.txt
