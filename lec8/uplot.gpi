@@ -1,0 +1,8 @@
+set term svg
+set out 'uplot.svg'
+set xlabel 'phi'
+set ylabel 'u'
+set title 'Netownian circular, Newtonian elliptical and GR orbits'
+plot 'orbit.dat' index 0 with lines title 'Newtonian circular' \
+	,'orbit.dat' index 1 with lines title 'Newtonian elliptical' \
+  ,'orbit.dat' index 2 with lines title 'GR'

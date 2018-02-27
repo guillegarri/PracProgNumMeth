@@ -1,0 +1,7 @@
+set term svg
+set out 'logistic.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'logistic function by gsl\_odeiv2 compared to analytical expression'
+plot 'logistic.dat' index 0 with lines title 'my_logistic' \
+	,'logistic.dat' index 1 with points title 'analytical'

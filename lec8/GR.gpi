@@ -1,0 +1,7 @@
+set term svg
+set out 'GR.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'GR orbit'
+set size ratio -1
+plot 'GR.dat' using (1/$2)*sin($1):(1/$2)*cos($1) with lines notitle
