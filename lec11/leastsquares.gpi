@@ -1,0 +1,14 @@
+set term svg background rgb 'white'
+set out 'plot.svg'
+set xlabel 'time'
+set ylabel 'activity'
+#f(t) = A*exp(-t/T)+B
+#A=4
+#T=3
+#B=1
+#fit f(t) 'data.txt' using 1:2:3 zerror via A,T,B
+#set samples 200
+plot \
+  'data.txt' with errorbars title 'Experimental Data'\
+ ,'fit.out' with lines title 'Least Squares Fit'\
+# ,f(x) with lines title 'gnuplot fit'

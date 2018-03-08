@@ -1,0 +1,6 @@
+set term svg background rgb 'white'
+set out 'RosenPath.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'Path of amoeba'
+plot 'RosenPath.out' with lines

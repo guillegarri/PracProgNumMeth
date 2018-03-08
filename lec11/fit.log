@@ -1,0 +1,57 @@
+
+
+*******************************************************************************
+Wed Mar  7 10:50:29 2018
+
+
+FIT:    data read from 'data.txt' using 1:2:3 zerror
+        format = x:z:s
+        #datapoints = 10
+function used for fitting: f(x)
+	f(x) = A*exp(-t/T)+B
+fitted parameters initialized with current variable values
+
+
+
+*******************************************************************************
+Wed Mar  7 10:50:46 2018
+
+
+FIT:    data read from 'data.txt' using 1:2:3 zerror
+        format = x:z:s
+        #datapoints = 10
+function used for fitting: f(t)
+	f(x) = A*exp(-t/T)+B
+fitted parameters initialized with current variable values
+
+
+
+*******************************************************************************
+Wed Mar  7 10:51:01 2018
+
+
+FIT:    data read from 'data.txt' using 1:2:3 zerror
+        format = x:z:s
+        #datapoints = 10
+function used for fitting: f(t)
+	f(t) = A*exp(-t/T)+B
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   A             T             B            
+   0 7.3717917607e+03   0.00e+00  2.07e+01    4.000000e+00   3.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Wed Mar  7 10:53:36 2018
+
+
+FIT:    data read from 'data.txt' using 1:2:3 zerror
+        format = x:z:s
+        #datapoints = 10
+function used for fitting: f(t)
+	f(t) = A*exp(-t/T)+B
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   A             T             B            
+   0 7.3717917607e+03   0.00e+00  2.07e+01    4.000000e+00   3.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
