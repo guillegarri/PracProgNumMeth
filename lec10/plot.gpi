@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'wavefunc.svg'
+set xlabel 'r'
+set ylabel 'wave function'
+
+plot 'epsilon.out' index 1 using 1:2 with points title 'calculated'\
+    , 'epsilon.out' index 1 using 1:3 with lines title 'analytical'
