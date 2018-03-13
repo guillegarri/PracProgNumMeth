@@ -1,0 +1,52 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+
+\title{The Error Function}
+\author{Markus R. Mosbech}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In mathematics, the error function (also called the Gauss error function) is a
+special function (non-elementary) of sigmoid shape that occurs in probability,
+statistics, and partial differential equations describing diffusion.
+It is defined as:
+$\mathrm{erf}(x) = \frac{2}{\sqrt{\pi}}\int_0^\infty e^{-t^2} \, dt$.
+In statistics, for nonnegative values of x, the error function has the following
+interpretation: for a random variable Y that is normally distributed with mean 0
+and variance 1/2, erf(x) describes the probability of Y falling in the range
+[-x, x].
+\end{abstract}
+
+\section{The name "error function"}
+The name and abbreviation for the error function (and the error function
+complement) were developed by J. W. L. Glaisher in 1871 on account of its
+connection with "the theory of Probability, and notably the theory of Errors."
+
+\section{Properties}
+The property $\mathrm{erf} ⁡ ( - z ) = − \mathrm{erf} ⁡ ( z )$  means that the
+error function is an odd function. This directly results from the fact that the
+integrand $e^{ - t^2}$ is an even function.
+
+For any complex number $z$:
+\begin{equation}
+  \mathrm{erf}(\bar{z})=\bar{\mathrm{erf}(z)}
+\end{equation}
+where $\bar{z}$ is the complex conjugate of $z$.
+
+The error function at $+\infty$ is exactly 1 (see Gaussian integral). At the
+real axis, $\mathrm{erf}(z)$ approaches unity at $ z \rightarrow \infty$ and
+$-1$ at $z \rightarrow -\infty$. At the imaginary axis, it tends to $\pm i\infty$.
+
+The error function is an entire function; it has no singularities (except that at
+infinity) and its Taylor expansion always converges.
+
+The shape of the error function can be seen in Figure~\ref{fig:erf}.
+\begin{figure}
+  \input{plot.tex}
+  \caption{A plot of the error function calculated from the differential equation.}
+  \label{fig:erf}
+\end{figure}
+\end{document}
