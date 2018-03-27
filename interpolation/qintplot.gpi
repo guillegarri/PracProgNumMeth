@@ -1,0 +1,8 @@
+set term svg background rgb 'white'
+set out 'qintplot.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Quadratic Spline"
+plot \
+ "qdat.txt" using 1:4  with lines title "int of quadratic function"\
+  ,"qdat.txt" using 1:5 with points title "interpolation"

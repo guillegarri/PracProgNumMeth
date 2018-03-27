@@ -1,0 +1,9 @@
+set term svg background rgb 'white'
+set out 'intcompplot.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Integrated splines"
+plot \
+ "alltestdat.txt" using 1:5  with lines title "linear"\
+  ,"alltestdat.txt" using 1:6 with lines title "quadratic"\
+  ,"alltestdat.txt" using 1:7 with lines title "cubic"

@@ -1,0 +1,9 @@
+set term svg background rgb 'white'
+set out 'ycompplot.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Interpolated values"
+plot \
+ "alltestdat.txt" using 1:2  with lines title "linear"\
+  ,"alltestdat.txt" using 1:3 with lines title "quadratic"\
+  ,"alltestdat.txt" using 1:4 with lines title "cubic"

@@ -15,7 +15,7 @@ int search(int n, double * x, double z){
 
     int m = (L+R)/2;
     if (x[m] <= z && x[m+1] > z) {
-      fprintf(stderr, "found m=%i\n",m);
+    //  fprintf(stderr, "found m=%i\n",m);
       return m;
     } else if (x[m] < z) {
       L = m+1;

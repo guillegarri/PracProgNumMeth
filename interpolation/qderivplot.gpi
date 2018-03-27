@@ -1,0 +1,8 @@
+set term svg background rgb 'white'
+set out 'qderivplot.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Quadratic Spline"
+plot \
+ "qdat.txt" using 1:6  with lines title "int of quadratic function"\
+  ,"qdat.txt" using 1:7 with points title "interpolation"

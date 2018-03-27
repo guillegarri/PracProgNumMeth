@@ -3,7 +3,7 @@
 int search(int n, double * x, double z);
 
 double linterp(int n, double *x, double *y, double z){
-  fprintf(stderr, "running linterp\n");
+  //fprintf(stderr, "running linterp\n", );
   int i = search(n, x, z);
   double b = (y[i+1] - y[i])/(x[i+1] - x[i]);
   double deltax = z - x[i];

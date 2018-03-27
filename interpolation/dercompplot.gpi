@@ -1,0 +1,8 @@
+set term svg background rgb 'white'
+set out 'dercompplot.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Spline derivatives"
+plot \
+ "alltestdat.txt" using 1:8  with lines title "quadratic"\
+  ,"alltestdat.txt" using 1:9 with lines title "cubic"
