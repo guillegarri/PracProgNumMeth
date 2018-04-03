@@ -2,6 +2,9 @@ CFLAGS = -Wall -std=gnu1x
 LDLIBS = -lm
 allplots = linintplot.svg linplot.svg qintplot.svg qderivplot.svg qplot.svg ycompplot.svg intcompplot.svg dercompplot.svg
 
+.PHONY: all
+all: plots qtest.txt
+
 .PHONY: plots
 plots: $(allplots)
 
