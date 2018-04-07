@@ -1,6 +1,7 @@
 #include <gsl/gsl_blas.h>
 #include <gsl/gsl_vector.h>
 #include <gsl/gsl_matrix.h>
+#include <stdlib.h>
 
 void qrdecomp(gsl_matrix * A, gsl_matrix * R);
 void qrbacksub(gsl_matrix * Q, gsl_matrix * R, gsl_vector * b, gsl_vector * x);
@@ -24,6 +25,9 @@ int main(int argc, char const *argv[]) {
   // QR decomposition:
   int n=5;
   int m=4;
+
+time_t t;
+srand((unsigned) time(&t));
 
   gsl_matrix * A = gsl_matrix_calloc(n,m);
   gsl_matrix * R = gsl_matrix_calloc(m,m);

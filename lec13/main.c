@@ -4,7 +4,7 @@
 int print_half_00(gsl_matrix* m)
 {
 	double half = 1.0/2.0;
-	int *status = printf( "half m_{00} = %g\n", gsl_matrix_get(m,0,0)*half );
+	int status = printf( "half m_{00} = %g\n", gsl_matrix_get(m,0,0)*half );
 	return status;
 }
 
