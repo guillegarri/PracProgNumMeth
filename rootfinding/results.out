@@ -1,0 +1,40 @@
+First function: 
+x=
+1.10041e-05
+9.08337
+f(x)=  (should be 0)
+-0.000453035
+2.53466e-06
+functioncalls = 51 
+Rosenbrock function:
+x=
+0.999997
+0.999995
+f(x)=  (should be 0)
+-8.05662e-06
+1.33631e-06
+functioncalls = 882 
+Himmelblau function:
+x=
+3
+2
+f(x)=  (should be 0)
+-1.87445e-08
+5.25424e-08
+functioncalls = 23 
+First function: 
+x=
+1.10041e-05
+9.08337
+f(x)=  (should be 0)
+-0.000453046
+2.53472e-06
+functioncalls = 26 
+Rosenbrock function:
+x=
+0.961706
+0.924876
+f(x)=  (should be 0)
+-0.0751687
+-0.000737435
+functioncalls = 6999986 

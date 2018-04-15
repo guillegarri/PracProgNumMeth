@@ -26,6 +26,7 @@ void F_one(gsl_vector * x, gsl_vector * fx) {
   double val_two = exp(-gsl_vector_get(x,0))+exp(-gsl_vector_get(x,1))-1.0-1.0/A;
   gsl_vector_set(fx, 0, val_one);
   gsl_vector_set(fx, 1, val_two);
+  functioncalls++;
 }
 
 void GradRosenbrock(gsl_vector * X, gsl_vector * FX) {
@@ -34,6 +35,7 @@ void GradRosenbrock(gsl_vector * X, gsl_vector * FX) {
 
   gsl_vector_set(FX,0,2*(200*x*x*x - 200*x*y + x - 1));
   gsl_vector_set(FX,1,200*(y-x*x));
+  functioncalls++;
 }
 
 void GradHimmelblau(gsl_vector * X, gsl_vector * FX) {
@@ -42,6 +44,7 @@ void GradHimmelblau(gsl_vector * X, gsl_vector * FX) {
 
   gsl_vector_set(FX,0, 4*x*(x*x+y-11)+2*x+2*y*y-14);
   gsl_vector_set(FX,1, 4*y*(x+y*y- 7)+2*x*x+2*y-22);
+  functioncalls++;
 }
 
 void F_oneWJ(gsl_vector * x, gsl_vector * fx, gsl_matrix * J) {
@@ -55,6 +58,7 @@ void F_oneWJ(gsl_vector * x, gsl_vector * fx, gsl_matrix * J) {
   gsl_matrix_set(J, 0, 1, A*gsl_vector_get(x,0));
   gsl_matrix_set(J, 1, 0, -exp(-gsl_vector_get(x,0)));
   gsl_matrix_set(J, 1, 1, -exp(-gsl_vector_get(x,1)));
+  functioncalls++;
 }
 
 void GradRosenbrockWJ(gsl_vector * X, gsl_vector * FX, gsl_matrix * J) {
@@ -68,6 +72,7 @@ void GradRosenbrockWJ(gsl_vector * X, gsl_vector * FX, gsl_matrix * J) {
   gsl_matrix_set(J, 0, 1, -400*y);
   gsl_matrix_set(J, 1, 0, -400*x);
   gsl_matrix_set(J, 1, 1, 200);
+  functioncalls++;
 }
 
 
@@ -91,6 +96,8 @@ int main(int argc, char const *argv[]) {
   gsl_vector_fprintf(stdout,x,"%g");
   printf("f(x)=  (should be 0)\n");
   gsl_vector_fprintf(stdout,fx,"%g");
+  printf("functioncalls = %i \n",functioncalls);
+  functioncalls=0;
 
 
 
@@ -106,6 +113,8 @@ int main(int argc, char const *argv[]) {
   gsl_vector_fprintf(stdout,x,"%g");
   printf("f(x)=  (should be 0)\n");
   gsl_vector_fprintf(stdout,fx,"%g");
+  printf("functioncalls = %i \n",functioncalls);
+  functioncalls=0;
 
   //Himmelblau function
   gsl_vector_set(x,0,2.5);
@@ -119,6 +128,8 @@ int main(int argc, char const *argv[]) {
   gsl_vector_fprintf(stdout,x,"%g");
   printf("f(x)=  (should be 0)\n");
   gsl_vector_fprintf(stdout,fx,"%g");
+  printf("functioncalls = %i \n",functioncalls);
+  functioncalls=0;
 
   //First function with Jacobian
   gsl_vector_set(x,0,-2);
@@ -134,6 +145,8 @@ int main(int argc, char const *argv[]) {
   gsl_vector_fprintf(stdout,x,"%g");
   printf("f(x)=  (should be 0)\n");
   gsl_vector_fprintf(stdout,fx,"%g");
+  printf("functioncalls = %i \n",functioncalls);
+  functioncalls=0;
 
   //Rosenbrock function with Jacobian
   gsl_vector_set(x,0,0.5);
@@ -147,6 +160,8 @@ int main(int argc, char const *argv[]) {
   gsl_vector_fprintf(stdout,x,"%g");
   printf("f(x)=  (should be 0)\n");
   gsl_vector_fprintf(stdout,fx,"%g");
+  printf("functioncalls = %i \n",functioncalls);
+  functioncalls=0;
 
 
 
