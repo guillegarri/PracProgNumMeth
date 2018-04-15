@@ -8,12 +8,12 @@ f(x)=  (should be 0)
 functioncalls = 51 
 Rosenbrock function:
 x=
-0.999997
-0.999995
+0.999596
+0.999193
 f(x)=  (should be 0)
--8.05662e-06
-1.33631e-06
-functioncalls = 882 
+-0.000804967
+-1.11425e-06
+functioncalls = 866 
 Himmelblau function:
 x=
 3
@@ -22,7 +22,7 @@ f(x)=  (should be 0)
 -1.87445e-08
 5.25424e-08
 functioncalls = 23 
-First function: 
+First function with Jacobian: 
 x=
 1.10041e-05
 9.08337
@@ -30,11 +30,19 @@ f(x)=  (should be 0)
 -0.000453046
 2.53472e-06
 functioncalls = 26 
-Rosenbrock function:
+Rosenbrock function with Jacobian:
 x=
 0.961706
 0.924876
 f(x)=  (should be 0)
 -0.0751687
 -0.000737435
-functioncalls = 6999986 
+functioncalls = 9999977 
+Himmelblau function with Jacobian:
+x=
+3
+2
+f(x)=  (should be 0)
+2.77112e-13
+2.30705e-06
+functioncalls = 24 

@@ -137,7 +137,7 @@ void newtonWJ(
         lambda /=2.0;
       }
 
-    } while(lambda > 1.0/64);
+    } while(lambda > 1.0/512);
 
 
   stepsdone++;

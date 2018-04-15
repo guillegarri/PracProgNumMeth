@@ -75,6 +75,19 @@ void GradRosenbrockWJ(gsl_vector * X, gsl_vector * FX, gsl_matrix * J) {
   functioncalls++;
 }
 
+void GradHimmelblauWJ(gsl_vector * X, gsl_vector * FX, gsl_matrix * J) {
+  double x = gsl_vector_get(X,0);
+  double y = gsl_vector_get(X,1);
+
+  gsl_vector_set(FX,0, 4*x*(x*x+y-11)+2*x+2*y*y-14);
+  gsl_vector_set(FX,1, 4*y*(x+y*y- 7)+2*x*x+2*y-22);
+
+  gsl_matrix_set(J, 0, 0, 4*(x*x+y-11) + 8*x*x +2);
+  gsl_matrix_set(J, 0, 1, 4*x+4*y);
+  gsl_matrix_set(J, 1, 0, 4*y+4*x);
+  gsl_matrix_set(J, 1, 1, 4*(x+y*x-7)+8*y*y+2);
+  functioncalls++;
+}
 
 int main(int argc, char const *argv[]) {
   gsl_vector * x = gsl_vector_calloc(2);
@@ -105,7 +118,7 @@ int main(int argc, char const *argv[]) {
   gsl_vector_set(x,0,0.5);
   gsl_vector_set(x,1,1.5);
 
-  newton(GradRosenbrock, x, 1e-3,1e-5);
+  newton(GradRosenbrock, x, 1e-3,1e-3);
 
   GradRosenbrock(x,fx);
 
@@ -141,7 +154,7 @@ int main(int argc, char const *argv[]) {
   F_oneWJ(x,fx,J);
 
 
-  printf("First function: \nx=\n");
+  printf("First function with Jacobian: \nx=\n");
   gsl_vector_fprintf(stdout,x,"%g");
   printf("f(x)=  (should be 0)\n");
   gsl_vector_fprintf(stdout,fx,"%g");
@@ -152,11 +165,26 @@ int main(int argc, char const *argv[]) {
   gsl_vector_set(x,0,0.5);
   gsl_vector_set(x,1,1.5);
 
-  newtonWJ(GradRosenbrockWJ, x,1e-5);
+  newtonWJ(GradRosenbrockWJ, x,1e-3);
 
   GradRosenbrockWJ(x,fx,J);
 
-  printf("Rosenbrock function:\nx=\n");
+  printf("Rosenbrock function with Jacobian:\nx=\n");
+  gsl_vector_fprintf(stdout,x,"%g");
+  printf("f(x)=  (should be 0)\n");
+  gsl_vector_fprintf(stdout,fx,"%g");
+  printf("functioncalls = %i \n",functioncalls);
+  functioncalls=0;
+
+  //Himmelblau function with Jacobian
+  gsl_vector_set(x,0,2.5);
+  gsl_vector_set(x,1,2.5);
+
+  newtonWJ(GradHimmelblauWJ, x, 1e-5);
+
+  GradHimmelblauWJ(x,fx,J);
+
+  printf("Himmelblau function with Jacobian:\nx=\n");
   gsl_vector_fprintf(stdout,x,"%g");
   printf("f(x)=  (should be 0)\n");
   gsl_vector_fprintf(stdout,fx,"%g");
