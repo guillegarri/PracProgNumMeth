@@ -5,7 +5,8 @@ LDLIBS += `gsl-config --libs`
 all: times.txt out.txt times.svg
 
 times.txt: main Makefile
-	for n in `seq 73 2 213`; do time --format "$$n %U" --append --output $@ ./main $$n 1>/dev/null; done
+	rm -f times.txt
+	for n in `seq 200 2 300`; do time --format "$$n %U" --append --output $@ ./main $$n 1>/dev/null; done
 
 out.txt: main
 	./$< > $@

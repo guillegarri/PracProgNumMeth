@@ -1,0 +1,10 @@
+set term svg background rgb 'white'
+set out 'plot1.svg'
+set xlabel 'x'
+set ylabel 'y'
+set title 'Data with fit'
+set key bottom
+plot 'data.out' index 0 with errorbars title 'Data' \
+	,'data.out' index 1 using 1:2 with lines title 'Fit' \
+  ,'data.out' index 1 using 1:3 with lines title 'Lower bound' \
+  ,'data.out' index 1 using 1:4 with lines title 'Upper bound'
