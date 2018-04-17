@@ -7,6 +7,15 @@
 void qrdecomp(gsl_matrix * A, gsl_matrix * R);
 void qrbacksub(gsl_matrix * Q, gsl_matrix * R, gsl_vector * b, gsl_vector * x);
 
+void printM(gsl_matrix * A) {
+  for (int i = 0; i < A->size1; i++) {
+    for (int j = 0; j < A->size2; j++) {
+      printf("%g ",gsl_matrix_get(A,i,j) );
+    }
+    printf("\n");
+  }
+}
+
 void newton(
             void f(gsl_vector * X, gsl_vector * FX),
             gsl_vector * xstart,
@@ -69,7 +78,7 @@ void newton(
         lambda /=2.0;
       }
 
-    } while(lambda > 1.0/64);
+    } while(lambda > 1.0/512);
 
 
   stepsdone++;
@@ -77,7 +86,7 @@ void newton(
 } while( gsl_blas_dnrm2(fx)>epsilon && stepsdone < maxsteps);
 
   gsl_vector_memcpy(xstart,x);
-  fprintf(stderr, "Newton steps done %i\n", stepsdone);
+  fprintf(stdout, "Newton steps done %i\n", stepsdone);
 
   gsl_matrix_free(J);
   gsl_matrix_free(R);
@@ -98,6 +107,7 @@ void newtonWJ(
   gsl_vector * xplus = gsl_vector_calloc(n);
   gsl_vector * deltax = gsl_vector_calloc(n);
   gsl_vector * fx = gsl_vector_calloc(n);
+  gsl_vector * fxplus = gsl_vector_calloc(n);
   gsl_vector * mfx = gsl_vector_calloc(n);
   gsl_matrix * J = gsl_matrix_calloc(n,n);
   gsl_matrix * R = gsl_matrix_calloc(n,n);
@@ -109,8 +119,26 @@ void newtonWJ(
   int maxsteps = 1000000;
 
   gsl_vector_memcpy(x, xstart);
+  f(x,fx,J);
   do {
-    f(x,fx,J);
+    /*
+    printf("\n\nAnalytic:\n");
+    printM(J);
+
+	double dx=1e-3;
+   for (int k = 0; k < n; k++) {
+      gsl_vector_memcpy(xplus,x);
+      gsl_vector_set(xplus,k,gsl_vector_get(xplus,k)+dx);
+      f(xplus, fxplus, R);
+      gsl_vector_sub(fxplus, fx);
+      for (int i = 0; i < n; i++) {
+        //dfdx = (fxplus - fx)/dx;
+        gsl_matrix_set(J,i,k, gsl_vector_get(fxplus,i)/dx);
+      }
+    }
+    printf("\nNumeric:\n");
+    printM(J);
+    */
 
     gsl_vector_memcpy(mfx, fx);
     gsl_vector_scale(mfx,-1);
@@ -126,12 +154,13 @@ void newtonWJ(
       gsl_vector_scale(deltax,lambda);
       gsl_vector_add(xplus,deltax);
       gsl_vector_scale(deltax, 1.0/lambda);
-      f(xplus,fx,J);
+      f(xplus,fxplus,R);
 
-      fxplussize = gsl_blas_dnrm2(fx);
+      fxplussize = gsl_blas_dnrm2(fxplus);
 
       if (fxplussize < (1-lambda/2.0)*fxsize) {
         gsl_vector_memcpy(x,xplus);
+        f(x,fx,J);
         break;
       } else {
         lambda /=2.0;
@@ -144,11 +173,12 @@ void newtonWJ(
   //printf("Steps done %i\n", stepsdone);
 } while( gsl_blas_dnrm2(fx)>epsilon && stepsdone < maxsteps);
   gsl_vector_memcpy(xstart,x);
-  fprintf(stderr, "Newton w. Jacobian steps done %i\n", stepsdone);
+  fprintf(stdout, "Newton w. Jacobian steps done %i\n", stepsdone);
 
   gsl_vector_free(x);
   gsl_vector_free(fx);
   gsl_vector_free(xplus);
+  gsl_vector_free(fxplus);
   gsl_vector_free(deltax);
   gsl_vector_free(mfx);
   gsl_matrix_free(J);

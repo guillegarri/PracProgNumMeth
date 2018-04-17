@@ -1,4 +1,5 @@
 First function: 
+Newton steps done 12
 x=
 1.10041e-05
 9.08337
@@ -6,15 +7,41 @@ f(x)=  (should be 0)
 -0.000453035
 2.53466e-06
 functioncalls = 51 
-Rosenbrock function:
+
+First function with Jacobian: 
+Newton w. Jacobian steps done 12
 x=
-0.999596
-0.999193
+1.10041e-05
+9.08337
 f(x)=  (should be 0)
--0.000804967
--1.11425e-06
-functioncalls = 866 
+-0.000453046
+2.53472e-06
+functioncalls = 27 
+
+
+Rosenbrock function:
+Newton steps done 90
+x=
+0.999968
+0.999936
+f(x)=  (should be 0)
+-9.30667e-05
+1.46622e-05
+functioncalls = 726 
+
+Rosenbrock function with Jacobian:
+Newton w. Jacobian steps done 148
+x=
+1
+1
+f(x)=  (should be 0)
+8.55152e-07
+-6.15874e-07
+functioncalls = 1090 
+
+
 Himmelblau function:
+Newton steps done 5
 x=
 3
 2
@@ -22,27 +49,13 @@ f(x)=  (should be 0)
 -1.87445e-08
 5.25424e-08
 functioncalls = 23 
-First function with Jacobian: 
-x=
-1.10041e-05
-9.08337
-f(x)=  (should be 0)
--0.000453046
-2.53472e-06
-functioncalls = 26 
-Rosenbrock function with Jacobian:
-x=
-0.961706
-0.924876
-f(x)=  (should be 0)
--0.0751687
--0.000737435
-functioncalls = 9999977 
+
 Himmelblau function with Jacobian:
+Newton w. Jacobian steps done 5
 x=
 3
 2
 f(x)=  (should be 0)
-2.77112e-13
-2.30705e-06
-functioncalls = 24 
+3.40705e-12
+2.75193e-11
+functioncalls = 13 
