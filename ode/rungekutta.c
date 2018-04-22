@@ -160,7 +160,7 @@ void driver_FSAL(
   gsl_vector_free(fsal);
 }
 
-void integral_FSAL(double * x,
+void integral_FSAL(double * x, //start at a
                    double b,
                    double * h,
                    gsl_vector * y,
@@ -172,5 +172,5 @@ void integral_FSAL(double * x,
   gsl_vector_set(y,0,0);
 
   driver_FSAL(x, b, h, y, acc, eps, rkstep32_FSAL, f, info);
-  
+
 }
