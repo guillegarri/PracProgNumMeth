@@ -1,0 +1,11 @@
+set term svg background rgb 'white'
+set out 'sine.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Path when solving sine"
+set key bottom left
+plot \
+ "sine.out" using 1:2  with lines title "y(x)"\
+  ,"sine.out" using 1:3 with lines title "dy/dx"\
+  ,"mathsine.out" using 1:2 with lines title "sin(x)"\
+  ,"mathsine.out" using 1:3 with lines title "cos(x)"

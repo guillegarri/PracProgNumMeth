@@ -1,0 +1,7 @@
+Solving differential equation for sine from 0 to 6.28
+Final value, y=0.00504509 dy/dx=0.978495
+Math values: sin(b)=-0.0031853 cos(b)=0.999995
+Acc = 0.0005 eps = 0.01
+Solving differential equation for gaussian integral from -10 to 10
+Result, integ=1.76913
+For larger intervals, should converge towards 1.77245
