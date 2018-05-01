@@ -1,0 +1,46 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+
+\title{Arctan from differential equation}
+\author{Markus R. Mosbech}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{The exercise}
+My exercise is to use the differential equation for arctan to write an arctan function.
+This differential equation is
+\begin{equation}
+  \text{arctan}(x)' = \frac{1}{x^2 + h} \qquad , \qquad \text{arctan}(0)=0.
+\end{equation}
+My function should be compared to the function from math.h or GSL.
+
+\section{Solving the Exercise}
+I solve the exercise by using the GSL ODE solver. I define my ODE function in the
+way required by GSL.
+I then define an arctan function, which should integrate the ODE and return the
+value at the endpoint, an x-value provided when calling my arctan function,
+making it work just like calling the math.h arctan.
+
+The ODE system contains just a single ODE, the dimension is thus 1. I do not use a jacobian or any further params.
+I define a suitable precision and accuracy, in this case I define both as $10^{-6}$.
+Now I just have to allocate a driver, in this gase I use a GSL odeiv2 driver with a
+rkf45 stepper. It is then applied, calculating a y-value, and then freed. The function
+then returns this y-value.
+
+My main function just consists of a for-loop calling my arctan function and the math.h arctan
+for a series of x-values. These results, along with the x-values are sent to the standard output.
+
+When the makefile is run, this data is saved in data.out. I use gnuplot to plot the data to both
+an .svg and a .tex-file. The makefile then builds this report using the .tex plot.
+
+
+
+\begin{figure}
+  \input{plot.tex}
+  \caption{A plot of my arctan calculated from the differential equation along with the arctan from math.h.}
+  \label{fig:erf}
+\end{figure}
+\end{document}

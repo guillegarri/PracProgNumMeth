@@ -1,0 +1,25 @@
+Sqrt integrated from 0 to 1:
+Q=0.666667
+Calculated = 0.666667
+Exact = 0.666667
+Error estimate = 1.66667e-08
+Actual error = 1.11129e-11
+InvSqrt integrated from 0 to 1:
+Q=2
+Calculated = 2
+Exact = 2
+Error estimate = 3e-08
+Actual error = 6.15508e-13
+lndvsqrt integrated from 0 to 1:
+Q=-4
+Calculated = -4
+Exact = -4
+Error estimate = 5e-08
+Actual error = 2.8999e-13
+testfunction integrated from 0 to 1:
+Q=3.14159
+Calculated = 3.14159
+Exact = 3.14159
+Error estimate = 4.14159e-08
+Internal error = 5.97213e-09
+Actual error = 6.29097e-12
