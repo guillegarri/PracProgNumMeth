@@ -2,6 +2,7 @@ set term svg background rgb 'white'
 set out 'plot.svg'
 set xlabel "x"
 set ylabel "y"
+set key right bottom
 plot \
  "data.out" using 1:2  with points title "My arctan"\
   ,"data.out" using 1:3 with lines title "math.h"
