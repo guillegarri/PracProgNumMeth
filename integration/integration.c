@@ -42,3 +42,35 @@ double integrator(double f(double), double a, double b, double acc, double eps, 
 	//*err = my_estimate_of_the_error; /* should be smaller than acc+|Q|*eps */
 	return Q;
 }
+
+double infintegrator(double f(double), double a, double b, double acc, double eps, double *err){
+  int ainf = isinf(a);
+  int binf = isinf(b);
+  double Q;
+
+  if (ainf ==0 && binf ==0) {
+    //No infinities, business as usual
+    Q = integrator( f, a, b, acc, eps, err);
+  } else if (ainf != 0 && binf != 0) {
+    //Infinity at both ends, gotta fix
+    double Dinf(double t){return f(t/(1-t*t))*(1+t*t)/((1-t*t)*(1-t*t));}
+    Q = integrator( Dinf, -1, 1, acc, eps, err);
+  } else if (ainf == 0 && binf != 0){
+    //Infinity at top of interval, fix
+    double Uinf(double t){return f(a+(1-t)/t)/(t*t);}
+    Q = integrator( Uinf, 0, 1, acc, eps, err);
+  } else if (ainf != 0 && binf ==0) {
+    //Infinity at bottom of interval, fix
+    double Linf(double t){return f(b-(1-t)/t)/(t*t);}
+    Q = integrator( Linf, 0, 1, acc, eps, err);
+  } else {
+    printf("Error in infinity function!\n");
+    Q = INFINITY;
+  }
+	return Q;
+}
+
+double ClenshawCurtis(double f(double), double a, double b, double acc, double eps, double *err){
+  double g(double t){return f( (a+b)/2+(a-b)/2*cos(t) )*sin(t)*(b-a)/2;}
+  return integrator(g,0,M_PI,acc,eps,err);
+}
