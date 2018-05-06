@@ -1,0 +1,18 @@
+First test function, a 2d Gaussian
+Result: 3.03246
+Target result: 3.14159
+Estimated error: 0.233378
+Real error: 0.109135
+
+Second test function, 3d distance squared
+Result: 24972.1
+Target result: 25000
+Estimated error: 128.648
+Real error: 27.8593
+
+Third test function, provided function
+Result: 1.33486
+Target result: 1.3932
+Estimated error: 0.0293402
+Real error: 0.0583421
+
