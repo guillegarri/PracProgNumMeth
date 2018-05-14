@@ -1,0 +1,6 @@
+set term svg background rgb "white"
+set out "plot.svg"
+set xlabel "x"
+set ylabel "y"
+set title "Function and neural network fit"
+plot "results.out" using 1:2 with linespoints  title "Fit", "results.out" using 1:3 with lines title "Actual"
