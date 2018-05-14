@@ -46,10 +46,10 @@ int main(int argc, char const *argv[]) {
     gsl_vector_set(ANN->data, nnodes+i, 1);
     gsl_vector_set(ANN->data, 2*nnodes+i, 1);
   }
-  gsl_vector_fprintf(stderr,ANN->data,"%8.3g");
+  //gsl_vector_fprintf(stderr,ANN->data,"%8.3g");
 
   ann_train(ANN,x,y);
-  gsl_vector_fprintf(stderr,ANN->data,"%8.3g");
+  //gsl_vector_fprintf(stderr,ANN->data,"%8.3g");
 
 	double dz=(b-a)/128;
   for (double z=a;z<=b;z+=dz) {

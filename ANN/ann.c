@@ -55,7 +55,6 @@ void ann_train(ann * nw, gsl_vector * X, gsl_vector * Y) {
     s /= X->size;
 
 		//fprintf(stderr, "score: %g\n", s);
-		//gsl_vector_fprintf(stderr,v,"%8.3g");
     return s;
   }
 
