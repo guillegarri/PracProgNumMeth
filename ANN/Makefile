@@ -5,7 +5,7 @@ plot.svg: plot.gpi results.out
 	gnuplot $<
 
 results.out: main
-	./$< > $@ 2>log
+	./$< > $@ 2>log.out
 
 main: main.o ann.o
 
@@ -13,3 +13,4 @@ clean:
 	find . -type f -executable -delete
 	rm -f *.o
 	rm -f *.out
+	rm -f *.svg
