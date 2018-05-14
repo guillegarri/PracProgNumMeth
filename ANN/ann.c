@@ -49,12 +49,12 @@ void ann_train(ann * nw, gsl_vector * X, gsl_vector * Y) {
       double x = gsl_vector_get(X,i);
       double y = gsl_vector_get(Y,i);
       double fit = ann_feed(nw,x);
-			fprintf(stderr, "x = %g, y = %g, fit = %g\n",x,y,fit );
+			//fprintf(stderr, "x = %g, y = %g, fit = %g\n",x,y,fit );
       s += DIFF(y-fit);
     }
-//    s /= X->size;
+    s /= X->size;
 
-		fprintf(stderr, "score: %g\n", s);
+		//fprintf(stderr, "score: %g\n", s);
 		gsl_vector_fprintf(stderr,v,"%8.3g");
     return s;
   }
