@@ -1,0 +1,16 @@
+set term svg background rgb "white"
+set out "plot2d.svg"
+set view map
+set size ratio .9
+
+set object 1 rect from graph 0, graph 0 to graph 1, graph 1 back
+set object 1 rect fc rgb "black" fillstyle solid 1.0
+
+set multiplot layout 1, 2
+set title "neural network fit"
+set key off
+splot "results2d.out" with points  pointtype 5 pointsize 1 palette linewidth 30
+
+set title "function to fit"
+set key off
+splot "func2d.out" with points  pointtype 5 pointsize 1 palette linewidth 30
