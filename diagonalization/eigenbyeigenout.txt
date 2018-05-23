@@ -1,0 +1,44 @@
+My matrix A is
++0.530 +0.487 +0.730 +0.121 +0.106 +0.586 +0.639 
++0.487 +0.854 +0.285 +0.518 +0.268 +0.351 +0.282 
++0.730 +0.285 +0.121 +0.720 +0.114 +0.619 +0.839 
++0.121 +0.518 +0.720 +0.633 +0.635 +0.072 +0.368 
++0.106 +0.268 +0.114 +0.635 +0.004 +0.205 +0.567 
++0.586 +0.351 +0.619 +0.072 +0.205 +0.449 +0.960 
++0.639 +0.282 +0.839 +0.368 +0.567 +0.960 +0.608 
+Lowest eigenvalue
+ -0.900
+  0.000
+  0.000
+  0.000
+  0.000
+  0.000
+  0.000
+Highest eigenvalue
+  3.294
+  0.000
+  0.000
+  0.000
+  0.000
+  0.000
+  0.000
+All eigenvalues value by value
+  3.294
+  0.948
+  0.559
+  0.092
+ -0.253
+ -0.541
+ -0.900
+All eigenvalues with cyclic sweeps
+ -0.900
+ -0.541
+ -0.253
+  0.092
+  0.559
+  0.948
+  3.294
+Rotations to get lowest eigenvalue: 150, sweeps: 25
+Rotations to get highest eigenvalue: 60, sweeps: 10
+Rotations to get all eigenvalues (value by value): 248, sweeps: 60
+Rotations to get all eigenvalues (cyclic): 147, sweeps: 7
