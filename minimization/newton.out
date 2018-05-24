@@ -2,11 +2,11 @@ Rosenbrock function:
 Minimum at x=
 1
 1
-With value 1.46556e-29
+With value 7.3626e-20
 and gradient (should be 0) =
--7.32747e-15
--2.22045e-14
-steps taken: 5, functioncalls: 12
+2.9898e-09
+-1.75171e-09
+steps taken: 10, functioncalls: 24
 
 Himmelblau function:
 Minimum at x=

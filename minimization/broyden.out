@@ -1,0 +1,31 @@
+Rosenbrock function:
+Minimum at x=
+0.999998
+0.999997
+With value 2.4685e-12
+and gradient (should be 0) =
+-9.48082e-06
+3.17732e-06
+steps taken: 2960, functioncalls: 5949
+
+Himmelblau function:
+Minimum at x=
+3
+2
+With value 8.3882e-13
+and gradient (should be 0) =
+9.69862e-06
+-7.88177e-07
+steps taken: 176, functioncalls: 1028
+
+Least squares fitting:
+Minimum at x=
+3.55701
+3.20544
+1.23192
+With value 2.06796
+and gradient (should be 0) =
+9.69862e-06
+-7.88177e-07
+steps taken: 1000000, functioncalls: 12000024
+
