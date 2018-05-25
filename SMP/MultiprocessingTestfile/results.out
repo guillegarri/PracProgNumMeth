@@ -1,0 +1,59 @@
+Sqrt integrated from 0 to 1:
+Calculated = 0.666667
+Exact = 0.666667
+Error estimate = 1.66667e-08
+Actual error = 1.11129e-11
+
+InvSqrt integrated with Clenshaw-Curtis:
+Calculated = 2
+Exact = 2
+Error estimate = 3e-08
+Actual error = 3.95239e-14
+
+testfunction integrated from 0 to 1:
+Calculated = 3.14159
+Exact = 3.14159
+Error estimate = 4.14159e-08
+Internal error = 5.97213e-09
+Actual error = 6.29097e-12
+
+Gaussian integrated from -inf to inf:
+Calculated = 1.77245
+Exact = 1.77245
+Error estimate = 2.77245e-08
+Internal error = 5.36078e-09
+Actual error = 2.24848e-07
+
+testfunction integrated with Clenshaw-Curtis:
+Calculated = 3.14159
+Exact = 3.14159
+Error estimate = 4.14159e-08
+Internal error = 5.26236e-09
+Actual error = 5.32907e-14
+
+Gaussian integrated from 0 to inf:
+Calculated = 0.886227
+Exact = 0.886227
+Error estimate = 1.88623e-08
+Internal error = 4.88183e-09
+Actual error = 7.02525e-10
+
+Gaussian integrated from -inf to 0:
+Calculated = 0.886227
+Exact = 0.886227
+Error estimate = 1.88623e-08
+Internal error = 4.88183e-09
+Actual error = 7.02525e-10
+
+InvSqrt integrated from 0 to 1:
+Calculated = 2
+Exact = 2
+Error estimate = 3e-08
+Actual error = 6.15508e-13
+
+lndvsqrt integrated from 0 to 1:
+Calculated = -4
+Exact = -4
+Error estimate = 5e-08
+Actual error = 2.8999e-13
+

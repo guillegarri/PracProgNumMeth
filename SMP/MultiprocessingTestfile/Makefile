@@ -1,14 +1,10 @@
 CFLAGS += -Wall -O -std=gnu1x `gsl-config --cflags` -fopenmp
 LDLIBS += `gsl-config --libs` -lgomp
 
+results.out: main
+	./$< > $@
 
-error.svg: plot.gpi error.out
-	gnuplot $<
-
-results.out error.out: main
-	./$< 1> results.out 2> error.out
-
-main: main.o montecarlo.o
+main: main.o integration.o
 
 clean:
 	find . -type f -executable -delete

@@ -1,0 +1,7 @@
+set term svg background rgb "white"
+set out "error.svg"
+set xlabel "Number of points"
+set ylabel "Error"
+set logscale xy
+set title "Monte Carlo error as function of number of points"
+plot "error.out" using 1:4 with lines  title "Estimate", "error.out" using 1:5 with lines title "Actual"

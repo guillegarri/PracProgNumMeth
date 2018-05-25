@@ -1,98 +1,67 @@
-#include<math.h>
-#include<assert.h>
-#include<stdio.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-double integrator24(double f(double), double a, double b, double acc, double eps, double f2, double f3, double *interr,int nrecs);
-double integrator(double f(double), double a, double b, double acc, double eps, double *err);
-double infintegrator(double f(double), double a, double b, double acc, double eps, double *err);
-double ClenshawCurtis(double f(double), double a, double b, double acc, double eps, double *err);
+void regularmcMP(int dims, double *a, double *b, double f(double *x), int Numpoints, double * result, double * error);
 
-double invsqrt(double x){
-  return 1.0/sqrt(x);
+double twodgauss(double *x){
+  return exp(-x[0]*x[0]-x[1]*x[1]);
 }
 
-double lndvsqrt(double x){
-  return log(x)/sqrt(x);
+double distsquared3d(double *x){
+  return x[0]*x[0]+x[1]*x[1]+x[2]*x[2];
 }
 
-double testfunction(double x){
-  return 4*sqrt(1-(1-x)*(1-x));
-}
-
-double gaussian(double x){
-  return exp(-x*x);
+double testfunction(double * x){
+  return 1.0/((1-cos(x[0])*cos(x[1])*cos(x[2]))*M_PI*M_PI*M_PI);
 }
 
 int main(int argc, char const *argv[]) {
 
-  double a = 0;
-  double b = 1;
-  double acc =1e-8;
-  double eps =1e-8;
-
-#pragma omp parallel sections
-{
-
-  #pragma omp section
-  {
+  //First test function
+  int D = 2;
+  int N = 10000;
+  double a1[2] = {-10.0, -10.0};
+  double b1[2] = {10.0, 10.0};
+  double result;
   double error;
-  double Qsqrt = integrator(sqrt, a, b, acc, eps, &error);
-  printf("Sqrt integrated from 0 to 1:\nCalculated = %g\nExact = %g\nError estimate = %g\nActual error = %g\n\n",
-          Qsqrt, 2.0/3, acc+fabs(Qsqrt)*eps,fabs(Qsqrt-2.0/3));}
 
-  #pragma omp section
-   {double error;
-   double Qinvsqrt = integrator(invsqrt, a, b, acc, eps, &error);
-   printf("InvSqrt integrated from 0 to 1:\nCalculated = %g\nExact = %g\nError estimate = %g\nActual error = %g\n\n",
-          Qinvsqrt,2.0,acc+fabs(Qinvsqrt)*eps,fabs(Qinvsqrt-2.0));}
-
-   #pragma omp section
-   {double error;
-
-   double QCCinvsqrt = ClenshawCurtis(invsqrt, a, b, acc, eps, &error);
-   printf("InvSqrt integrated with Clenshaw-Curtis:\nCalculated = %g\nExact = %g\nError estimate = %g\nActual error = %g\n\n",
-          QCCinvsqrt, 2.0, acc+fabs(QCCinvsqrt)*eps,fabs(QCCinvsqrt-2.0));}
-
-   #pragma omp section
-   {double error;
-   double Qlndvsqrt = integrator(lndvsqrt, a, b, acc, eps, &error);
-   printf("lndvsqrt integrated from 0 to 1:\nCalculated = %g\nExact = %g\nError estimate = %g\nActual error = %g\n\n",
-   Qlndvsqrt, -4.0, acc+fabs(Qlndvsqrt)*eps,fabs(Qlndvsqrt+4.0));}
+  regularmcMP(D, a1, b1, twodgauss, N, &result, &error);
+  printf("First test function, a 2d Gaussian\n");
+  printf("Result: %g\n", result);
+  printf("Target result: %g\n", M_PI);
+  printf("Estimated error: %g\n", error);
+  printf("Real error: %g\n\n", fabs(result-M_PI));
 
 
-   #pragma omp section
-  {double error;
-  double Qtest = integrator(testfunction, a, b, acc, eps, &error);
-  printf("testfunction integrated from 0 to 1:\nCalculated = %g\nExact = %g\nError estimate = %g\nInternal error = %g\nActual error = %g\n\n",
-          Qtest, M_PI,acc+fabs(Qtest)*eps, error, fabs(Qtest-M_PI));}
+  //Second test function
+  D=3;
+  double a2[3] ={-5.0, -5.0, -5.0};
+  double b2[3] ={5.0, 5.0, 5.0};
 
-  #pragma omp section
-  {double error;
-  double QCCtest = ClenshawCurtis(testfunction, a, b, acc, eps, &error);
-  printf("testfunction integrated with Clenshaw-Curtis:\nCalculated = %g\nExact = %g\nError estimate = %g\nInternal error = %g\nActual error = %g\n\n",
-          QCCtest, M_PI, acc+fabs(QCCtest)*eps, error ,fabs(QCCtest-M_PI));}
+  regularmcMP(D, a2, b2, distsquared3d, N, &result, &error);
+  printf("Second test function, 3d distance squared\n");
+  printf("Result: %g\n", result);
+  printf("Target result: %g\n", 25000.0);
+  printf("Estimated error: %g\n", error);
+  printf("Real error: %g\n\n", fabs(result-25000.0));
 
-  #pragma omp section
-  {double error;
-  double Qgauss = infintegrator(gaussian, -INFINITY, INFINITY, acc, eps, &error);
-  printf("Gaussian integrated from -inf to inf:\nCalculated = %g\nExact = %g\nError estimate = %g\nInternal error = %g\nActual error = %g\n\n",
-          Qgauss, sqrt(M_PI), acc+fabs(Qgauss)*eps, error, fabs(Qgauss-sqrt(M_PI)));}
+  //Provided test function
+  //N*=1000;
+  double a3[3] ={0,0,0};
+  double b3[3] ={M_PI, M_PI, M_PI};
+  regularmcMP(D, a3, b3, testfunction, N, &result, &error);
+  printf("Third test function, provided function\n");
+  printf("Result: %g\n", result);
+  printf("Target result: %g\n", 1.393203929685);
+  printf("Estimated error: %g\n", error);
+  printf("Real error: %g\n\n", fabs(result-1.393203929685));
 
-  #pragma omp section
-  {double error;
-  double Qgauss = infintegrator(gaussian, 0, INFINITY, acc, eps, &error);
-  printf("Gaussian integrated from 0 to inf:\nCalculated = %g\nExact = %g\nError estimate = %g\nInternal error = %g\nActual error = %g\n\n",
-          Qgauss, sqrt(M_PI)/2, acc+fabs(Qgauss)*eps, error, fabs(Qgauss-sqrt(M_PI)/2));}
+  //Error as function of N, using 2d Gaussian
+  D=2;
+  for (N = 10; N < 1e9; N*=10) {
+    regularmcMP(D, a1, b1, twodgauss, N, &result, &error);
+    fprintf(stderr, "%i %g %g %g %g\n",N,result, M_PI, error, fabs(result-M_PI) );
+  }
 
-  #pragma omp section
-  {double error;
-  double Qgauss = infintegrator(gaussian, -INFINITY, 0, acc, eps, &error);
-  printf("Gaussian integrated from -inf to 0:\nCalculated = %g\nExact = %g\nError estimate = %g\nInternal error = %g\nActual error = %g\n\n",
-          Qgauss, sqrt(M_PI)/2, acc+fabs(Qgauss)*eps, error, fabs(Qgauss-sqrt(M_PI)/2));}
-
-}
-
-
-
-  return 0;
-}
+  return 0;}
