@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out '2dGauss_real.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Real 2d Gaussian"
+set pm3d map
+splot "grid_dgauss.out" with pm3d

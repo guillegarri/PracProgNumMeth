@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out '2dGauss_int.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Interpolated 2d Gaussian"
+set pm3d map
+splot "grid_dgauss_int.out" with pm3d

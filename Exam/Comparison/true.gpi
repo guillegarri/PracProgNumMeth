@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'true.svg'
+set xlabel "x"
+set ylabel "y"
+set title "True value"
+set pm3d map
+splot "true2.out" with pm3d

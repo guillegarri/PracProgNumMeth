@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'linear_real.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Real linear"
+set pm3d map
+splot "grid_linear.out" with pm3d

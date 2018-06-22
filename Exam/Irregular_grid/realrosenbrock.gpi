@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'rosenbrock_real.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Real Rosenbrock Function"
+set pm3d map
+splot "grid_rosenbrock.out" with pm3d

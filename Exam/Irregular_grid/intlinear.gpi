@@ -1,0 +1,7 @@
+set term svg background rgb 'white'
+set out 'linear_int.svg'
+set xlabel "x"
+set ylabel "y"
+set title "Interpolated linear"
+set pm3d map
+splot "grid_linear_int.out" with pm3d
