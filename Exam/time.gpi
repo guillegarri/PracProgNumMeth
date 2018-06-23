@@ -1,0 +1,7 @@
+set term pdfcairo font "Times-New-Roman,12"
+set out "times.pdf"
+set xlabel "Number of interpolations"
+set ylabel "Calculation time, sec"
+set title "Comparison of calculation times for interp types"
+set key left
+plot "Comparison/times1.out" title "Type 1", "Comparison/times2.out" title "Type 2"

@@ -7,6 +7,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void printM(gsl_matrix * A) {
+  for (int i = 0; i < A->size1; i++) {
+    for (int j = 0; j < A->size2; j++) {
+      fprintf(stderr,"%+-5.3f ",gsl_matrix_get(A,i,j) );
+    }
+    printf("\n");
+  }
+}
+
 typedef struct {
 	gsl_vector* X;
   gsl_vector* Y;
@@ -20,23 +29,24 @@ bilin * bilin_alloc(gsl_vector * X, gsl_vector *Y, gsl_matrix * F);
 double bilin2_interp(double x, double y, bilin * sys);
 void bilin_free(bilin * sys);
 
-double rnd(){
-  return ((double)rand()/RAND_MAX);
-}
+//double rnd(){
+//  return ((double)rand()/RAND_MAX);
+//}
 
 
 double dgauss(double x, double y){
   return exp(-x*x)*exp(-y*y);
+	//return 1+2*x+3*y+4*x*y;
 }
 
 
 int main(int argc, char const *argv[]) {
 
-  int Nx = 5;
-  int Ny = 5;
+  int Nx = 10;
+  int Ny = 10;
 
-	int nx = 50;
-	int ny = 50;
+	int nx = 100;
+	int ny = 100;
 
   double xmin = -3;
   double xmax = 3;

@@ -1,0 +1,17 @@
+set term pdfcairo font "Times-New-Roman,12" size 8.5,4
+set out 'regular.pdf'
+set multiplot layout 1,2 title "2d Gaussian, regular grid"
+
+set title "Interpolated"
+unset key
+set xlabel "x"
+set ylabel "y"
+set pm3d map
+splot "Regular_grid/grid_dgauss_int.out" with pm3d
+
+set title "Real values"
+unset key
+set xlabel "x"
+set ylabel "y"
+set pm3d map
+splot "Regular_grid/grid_dgauss.out" with pm3d

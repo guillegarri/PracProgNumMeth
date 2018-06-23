@@ -42,18 +42,23 @@ bilin * bilin_alloc(gsl_vector * X, gsl_vector *Y, gsl_matrix * F){
       double x1 = gsl_vector_get(X,i);
       double x2 = gsl_vector_get(X,i+1);
 
-      double y1 = gsl_vector_get(Y,i);
-      double y2 = gsl_vector_get(Y,i+1);
+      double y1 = gsl_vector_get(Y,j);
+      double y2 = gsl_vector_get(Y,j+1);
 
       double F11 = gsl_matrix_get(F, i,j);
       double F12 = gsl_matrix_get(F, i,j+1);
       double F21 = gsl_matrix_get(F, i+1,j);
       double F22 = gsl_matrix_get(F, i+1,j+1);
 
+      //fprintf(stderr, "%g %g %g %g\n", F11, F12, F21, F22);
+      //fprintf(stderr, "%g %g %g %g\n\n", f(x1,y1), f(x1,y2), f(x2,y1), f(x2,y2));
+
       double aval = (y1*x1*F22-y1*x2*F12-x1*y2*F21+x2*y2*F11)/(x2*y2-x1*y2-x2*y1+x1*y1);
       double bval = -(y1*F22-y1*F12-y2*F21+y2*F11)/((x1-x2)*(y1-y2));
       double cval = -(x1*F22-x1*F21-x2*F12+x2*F11)/((x1-x2)*(y1-y2));
       double dval = (F22 - F21 - F12 + F11)/(x2*y2-x1*y2-x2*y1+x1*y1);
+
+      //fprintf(stderr, "%g %g %g %g\n", aval, bval, cval, dval);
 
       gsl_matrix_set(a,i,j,aval);
       gsl_matrix_set(b,i,j,bval);
@@ -63,9 +68,9 @@ bilin * bilin_alloc(gsl_vector * X, gsl_vector *Y, gsl_matrix * F){
   }
 
   bilin_sys->a=a;
-  bilin_sys->b=a;
-  bilin_sys->c=a;
-  bilin_sys->d=a;
+  bilin_sys->b=b;
+  bilin_sys->c=c;
+  bilin_sys->d=d;
 
   return bilin_sys;
 }

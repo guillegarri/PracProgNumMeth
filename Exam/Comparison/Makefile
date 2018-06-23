@@ -24,11 +24,11 @@ times.svg: plot.gpi times1.out times2.out
 
 times1.out: test1 Makefile
 	rm -f times1.out
-	for n in `seq 100000 100000 1000000`; do time --format "$$n %U" --append --output $@ ./test1 $$n 1>/dev/null 2>/dev/null && echo $$n; done
+	for n in `seq 1000000 1000000 10000000`; do time --format "$$n %U" --append --output $@ ./test1 $$n 1>/dev/null 2>/dev/null && echo $$n; done
 
 times2.out: test2 Makefile
 	rm -f times2.out
-	for n in `seq 100000 100000 1000000`; do time --format "$$n %U" --append --output $@ ./test2 $$n 1>/dev/null 2>/dev/null && echo $$n; done
+	for n in `seq 1000000 1000000 10000000`; do time --format "$$n %U" --append --output $@ ./test2 $$n 1>/dev/null 2>/dev/null && echo $$n; done
 
 test1: test1.o bilinear.o
 
