@@ -1,0 +1,11 @@
+set term svg background rgb "white"
+set out "fit.svg"
+set xlabel "t"
+set ylabel "N"
+set title "Decay data with least squares fit"
+set key left
+f(x)=A*exp(-x/T)+B
+A=3.55701
+T=3.20544
+B=1.23192
+plot "decaydata.dat" title "measurement" w yerrorbars, f(x) title "Leastsquaresfit"

@@ -2,7 +2,10 @@ CFLAGS += -Wall -O -std=gnu1x `gsl-config --cflags`
 LDLIBS += `gsl-config --libs`
 
 .PHONY: all
-all: broyden.out newton.out
+all: broyden.out newton.out fit.svg
+
+fit.svg: plotfit.gpi
+	gnuplot $<
 
 broyden.out: testbroyden
 	./$< > $@
